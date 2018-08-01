@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    #main{
+        background: aqua;
+        height: 120px;
+        justify-content: center;
+        margin-left:10px;
+    }
+    h1{
+        font-size: 50px;
+    }
+    </style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>To do  List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script >
+           function submit(){
+           var u = document.getElementById('u')
+           // getting the listed element uncompleted
+            var uncomplete = document.createElement('ol') 
+            //creating an ordered list to hold task
+           let a = document.getElementById('task')
+           let text = document.createTextNode(a.value)
+           if (a.value ===""){
+               //to ensure an empty task is not stored up 
+            alert("Write a task")
+            } else{
+            var comp = document.createElement('input')
+            comp.type= 'button'
+            comp.value= 'completed?'
+            //the button moves task from uncompleted to completed
+            uncomplete.appendChild(text)
+            uncomplete.appendChild(comp)
+            u.appendChild(uncomplete)
+            //adding the task&button to the ordered list and the list to the component
+            }
+            a.value =""
+            //setting the text input back to empty
+             comp.addEventListener("click", completed)
+             //moves task to completed
+             comp.addEventListener("click",  remove)
+            //deletes task from uncompleted
+
+              function completed(){
+            let n = document.getElementById('n')
+            let complete = document.createElement('ol')      
+           let comp = document.createElement('input')
+           let del= document.createElement('input')
+            comp.type= 'checkbox'
+            comp.checked = 'true'
+            //checkbox returns to uncompleted
+            del.type = 'button'
+            del.value='delete'
+            //button deletes the task from the list
+            complete.appendChild(comp)
+            complete.appendChild(text)
+            complete.appendChild(del)
+            n.appendChild(complete)
+            comp.addEventListener( 'click',unchecking)
+            comp.addEventListener('click', remov)
+            del.addEventListener('click', delet)
+
+function delet(){
+    n.removeChild(complete)
+}
+             function remov(){
+                complete.remove(comp)
+            }
+                          }
+                    
+            function unchecking(){
+               var u = document.getElementById('u')
+            var uncomplete = document.createElement('ol')
+            var comp = document.createElement('input')
+            comp.type= 'button'
+            comp.value= 'completed?'
+            uncomplete.appendChild(text)
+            uncomplete.appendChild(comp)
+            u.appendChild(uncomplete)
+
+            comp.addEventListener("click", completed)
+             comp.addEventListener("click",  remove)
+
+         function remove(){
+            uncomplete.remove(comp)
+        }
+                             }
+       function remove(){
+            uncomplete.remove(comp)
+        }
+            }
+           
+        </script>
+</head>
+<body>
+        <div id='main'>
+                <h1>To-Do List</h1>
+            
+    <input type="text" placeholder="Task" id ='task'/>
+    <input type="button" value= submit id='btn' onclick="submit()">
+    </div>
+
+    <ul>
+        <li id='u'>Uncompleted Task  </li>
+        <li id='n'>Complete Task</li>
+    </ul>
+    <h6>By &copy; Oludare Suulola <script>
+    document.write(' ', new Date().getFullYear())
+    </script>
+    </h6>
+</body>
+</html>
